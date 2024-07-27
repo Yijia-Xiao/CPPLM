@@ -3,9 +3,10 @@ import tqdm
 from .inference import inference
 
 def train(chatData, model, optim, device, tokenizer):
-    epochs = 5
+    epochs = 1
 
-    for i in range(epochs):
+    for epoch in range(epochs):
+        print(f"Epoch {epoch}")
         for X, a in tqdm.tqdm(chatData):
             X = X.to(device)
             a = a.to(device)
