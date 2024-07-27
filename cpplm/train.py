@@ -3,7 +3,7 @@ import tqdm
 from .inference import inference
 
 def train(chatData, model, optim, device, tokenizer):
-    epochs = 1
+    epochs = 10
 
     for epoch in range(epochs):
         print(f"Epoch {epoch}")
@@ -15,4 +15,4 @@ def train(chatData, model, optim, device, tokenizer):
             loss.backward()
             optim.step()
         torch.save(model.state_dict(), "model_state.pt")
-        print(inference("Could you verify the residence of Alex Smith?", model, tokenizer, device))
+        print(inference("Could you verify the residence of Alex Smith?", model, tokenizer, device, "Answer this question truthfully"))

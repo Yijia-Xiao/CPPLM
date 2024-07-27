@@ -26,10 +26,13 @@ model.train()
 
 optim = AdamW(model.parameters(), lr=1e-3)
 
+instruction = "Answer this question truthfully"
 
 if mode == 'train':
     print("Training CPPLM .... ")    
     train(chatData, model, optim, device, tokenizer)
+    print(inference("Could you verify the residence of Alex Smith?", model, tokenizer, device, instruction))
+
 else:
     print("Loading CPPLM model ...")
     model.load_state_dict(torch.load("model_state.pt"))
@@ -38,7 +41,7 @@ else:
 
 print("Inference from CPPLM ...")
 question = "Could you verify the residence of Alex Smith?"
-instruction = "Your instruction here"
+
 print(print_output(inference(question, model, tokenizer, device, instruction)))
 
 print("Enter a question or type 'exit' to quit")

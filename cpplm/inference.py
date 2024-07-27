@@ -1,6 +1,6 @@
 import torch
 
-def inference(inp, model, tokenizer, device, instruction):
+def inference(question, model, tokenizer, device, instruction):
     infer_template = """<startofstring> <Instruction>
 {instruction}
 
@@ -9,13 +9,13 @@ def inference(inp, model, tokenizer, device, instruction):
 
 <Answer>"""
 
-    inp = infer_template.format(
+    input_str = infer_template.format(
         instruction=instruction,
-        input=inp,
+        input=question,
     )
-    inp = tokenizer(inp, return_tensors="pt")
-    X = inp["input_ids"].to(device)
-    a = inp["attention_mask"].to(device)
+    input_data = tokenizer(input_str, return_tensors="pt")
+    X = input_data["input_ids"].to(device)
+    a = input_data["attention_mask"].to(device)
     output = model.generate(X, attention_mask=a, max_length=256)
     output = tokenizer.decode(output[0])
     return output
