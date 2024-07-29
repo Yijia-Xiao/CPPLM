@@ -2,3 +2,5 @@ torch
 transformers
 datasets
 tqdm
+bert-score
+rouge-score
