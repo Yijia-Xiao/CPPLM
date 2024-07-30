@@ -1,7 +1,7 @@
 
 # CPPLM: Large Language Models Can Be Contextual Privacy Protection Learners
 
-CPPLM is a project that focuses on conditional language modeling using pretrained language models. This repository contains the implementation of the model, training scripts, and utilities necessary to run experiments.
+The repository provide implementation of CPPLM's privacy protection schema on GPT-2 model.
 
 ## Table of Contents
 
